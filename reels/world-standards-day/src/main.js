@@ -168,7 +168,7 @@ SCENES.forEach(sc => {
     sc.svg = svg; sc.drawn = [outer, inner]; sc.fin = f1.concat(f2); sc.dia = dia;
     [outer, inner].concat(f1.filter(x => x.tagName === 'path'), f2.filter(x => x.tagName === 'path')).forEach(p => { const L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
     sc.name = el('div', null, 'دکتر قازاریان،'); sc.name.id = 'name'; e.appendChild(sc.name);
-    sc.dates = el('div', null, '۱۳۰۴ تا ۱۳۹۹'); sc.dates.id = 'dates'; e.appendChild(sc.dates);
+    sc.dates = el('div', null, '۱۳۰۴ تا کنون'); sc.dates.id = 'dates'; e.appendChild(sc.dates);
     sc.occ = el('div', null, 'به مناسبت <b>روز جهانی استاندارد</b>'); sc.occ.id = 'occ'; e.appendChild(sc.occ);
     sc.logo = el('img'); sc.logo.id = 'logo'; sc.logo.src = '../assets/src/robat-logo.png'; e.appendChild(sc.logo);
     sc.site = el('div', null, 'WWW.ROBATCO.COM'); sc.site.id = 'site'; e.appendChild(sc.site);
