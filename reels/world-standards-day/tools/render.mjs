@@ -1,6 +1,7 @@
 // Render frames of src/index.html (deterministic, time-driven) to JPEGs.
 //   node tools/render.mjs <outDir> --from 0 --to 1139            # frame range @30fps
 //   node tools/render.mjs <outDir> --stills 0.5,5,21.5,35        # individual times (seconds) -> still_<t>.jpg
+//   add  --variant 2  for the third-person caption version
 import { createRequire } from 'module';
 import path from 'path';
 import fs from 'fs';
@@ -11,10 +12,11 @@ let pw;
 try { pw = require('playwright'); } catch { pw = require('/opt/node22/lib/node_modules/playwright'); }
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const page_url = pathToFileURL(path.join(here, '..', 'src', 'index.html')).href;
 const args = process.argv.slice(2);
 const out = args[0];
 const opt = (k, d) => { const i = args.indexOf('--' + k); return i >= 0 ? args[i + 1] : d; };
+const variant = opt('variant');   // --variant 2 -> third-person captions
+const page_url = pathToFileURL(path.join(here, '..', 'src', 'index.html')).href + (variant ? `?v=${variant}` : '');
 const FPS = 30, DUR = 38;
 fs.mkdirSync(out, { recursive: true });
 

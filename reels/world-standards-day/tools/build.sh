@@ -13,7 +13,7 @@ python3 -I tools/make_audio.py "$W/music.wav"
 third=$((FRAMES / 3))
 for i in 0 1 2; do
   from=$((i * third)); to=$(((i + 1) * third - 1))
-  node tools/render.mjs "$W/frames" --from "$from" --to "$to" &
+  node tools/render.mjs "$W/frames" ${VARIANT:+--variant $VARIANT} --from "$from" --to "$to" &
 done
 wait
 

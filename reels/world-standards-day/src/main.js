@@ -67,6 +67,21 @@ const SCENES = [
   { id: 's9', kind: 'end', t0: TL.s9, t1: TL.end }
 ];
 
+/* variant 2 (?v=2): third-person narration, no first-person lines in the name of the late Dr. Ghazarian */
+if (new URLSearchParams(location.search).get('v') === '2') {
+  const V2 = {
+    s1: 'امروز، به یاد [[دکتر قازاریان]]',
+    s2: Z('دامپزشک و فعال صنعت [[فرآورده~های گوشتی]] ایران.'),
+    s3: Z('استاد دانشکده~ی دامپزشکی [[دانشگاه تهران]].'),
+    s4: Z('مدیر پروژه~ی اولین کارخانه~ی [[جوجه~کشی صنعتی]] ایران.'),
+    s5: Z('پیش از انقلاب، رئیس [[سازمان ملی شیر کرمانشاه]].'),
+    s6: Z('تدوین~کننده~ی [[استاندارد ملی ۲۳۰۳]]؛ مبنای کیفیت فرآورده~های گوشتی تا امروز.'),
+    s7: Z('بنیان~گذار [[انجمن فرآورده~های گوشتی]] و اولین [[مجتمع آموزشی]] صنعت گوشت.'),
+    s8: 'کیفیت، میراث او.'
+  };
+  SCENES.forEach(sc => { if (V2[sc.id]) sc.cap = V2[sc.id]; });
+}
+
 /* ---------------------------------------------------------------- DOM build */
 const root = document.getElementById('scenes');
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
@@ -78,7 +93,8 @@ function buildCaption(sc, parent, cls) {
   parts.forEach(p => {
     const key = p.startsWith('[[');
     const txt = key ? p.slice(2, -2) : p;
-    txt.split(/\s+/).filter(Boolean).forEach(w => words.push({ w, key: key || sc.capGold }));
+    const glue = !key && words.length && /^\S/.test(txt);   // punctuation glued to the previous (highlighted) word
+    txt.split(/\s+/).filter(Boolean).forEach((w, i) => { if (i === 0 && glue) words[words.length - 1].w += w; else words.push({ w, key: key || sc.capGold }); });
   });
   words.forEach((o, i) => {
     const s = el('span', 'w' + (o.key ? ' k' : ''), o.w);

@@ -4,10 +4,11 @@
 
 | فایل | توضیح |
 |---|---|
-| `robat-world-standards-day-reel.mp4` | ریلز نهایی ۱۰۸۰×۱۹۲۰، ۳۰fps، ۳۸ ثانیه، با موسیقی و زیرنویس فارسی (بدون صدای گوینده) |
+| `robat-world-standards-day-reel.mp4` | نسخه‌ی ۱ (اول‌شخص: «من دکتر قازاریان هستم…») ۱۰۸۰×۱۹۲۰، ۳۰fps، ۳۸ ثانیه، با موسیقی و زیرنویس فارسی |
+| `robat-world-standards-day-reel-v2-narrator.mp4` | نسخه‌ی ۲ (سوم‌شخص: «امروز، به یاد دکتر قازاریان…»)؛ همان تصاویر و موسیقی. با `--variant 2` ساخته می‌شود |
 | `robat-world-standards-day-music-only.m4a` | فقط موسیقی و افکت‌ها، برای افزودن صدای گوینده |
-| `captions.fa.srt` | زیرنویس فارسی (برای ریلز/تلگرام/CapCut؛ در خود ویدیو هم سوخته است) |
-| `voiceover-timing.fa.md` | متن و بازه‌ی زمانی هر جمله برای ضبط صدا |
+| `captions.fa.srt` / `captions.fa.v2-narrator.srt` | زیرنویس فارسی (برای ریلز/تلگرام/CapCut؛ در خود ویدیو هم سوخته است) |
+| `voiceover-timing.fa.md` / `voiceover-timing.fa.v2-narrator.md` | متن و بازه‌ی زمانی هر جمله برای ضبط صدا |
 
 ## ساختار پروژه
 
